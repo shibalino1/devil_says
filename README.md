@@ -1,14 +1,17 @@
-# Devil Says 😈
+# Devil Says
 
-A small Simon-like memory game made with Godot.
+A Simon-like memory game with modifier events.
 
-## 🕹️ How to play
-Repeat the sequence shown by the game.
-Each round adds a new step.
+Reproduce what the devil says to keep going and increase your score.
 
-## ⚙️ Tech
-- Engine: Godot
-- Language: GDScript
+Multiply your score by achieving streaks with modifier cards that change the rules.
 
-## 📜 License
-MIT
+# Made with
+Godot Engine
+
+# License
+Open-source project under the MIT License.
+
+# Play on itch.io
+https://shibalino1.itch.io/devil-says
+
