@@ -1,0 +1,17 @@
+# Godot 4+ specific ignores
+.godot/
+/android/build/
+/builds/
+.import/
+.export/
+*.import
+*.tmp
+*.temp
+*.swp
+*~
+.cache/
+bin/
+build/
+dist/
+.DS_Store
+Thumbs.db

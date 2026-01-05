@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccx0j81tnalek"]
+
+[ext_resource type="Script" uid="uid://b5tak7yyv575u" path="res://ui/ui.gd" id="1_4dqd5"]
+[ext_resource type="FontFile" uid="uid://d0quyeianlp2x" path="res://assets/fonts/pixel.ttf" id="2_58bgn"]
+[ext_resource type="Texture2D" uid="uid://d4d27o6x3i3vd" path="res://assets/ui/timer_bar.png" id="2_eenyo"]
+[ext_resource type="Texture2D" uid="uid://p1h55m2onc0y" path="res://assets/ui/health_bar.png" id="4_eenyo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epmlc"]
+bg_color = Color(0.13725491, 0.6392157, 0.8862745, 1)
+
+[node name="UI" type="Node"]
+script = ExtResource("1_4dqd5")
+
+[node name="TimerBarClip" type="Sprite2D" parent="."]
+position = Vector2(208.8, 36)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_eenyo")
+
+[node name="TimerBar" type="ColorRect" parent="TimerBarClip"]
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.5
+offset_top = -7.0
+offset_right = -23.5
+offset_bottom = 10.0
+grow_horizontal = 2
+pivot_offset = Vector2(0, 20)
+
+[node name="Start" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -55.0
+offset_right = 63.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_58bgn")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -77.0
+offset_right = 192.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_58bgn")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedUp" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.25
+offset_top = -89.0
+offset_right = 254.25
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9843137, 0.27058825, 0.18039216, 1)
+theme_override_fonts/font = ExtResource("2_58bgn")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_epmlc")
+text = "SPEED UP !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBarClip" type="Sprite2D" parent="."]
+position = Vector2(208.8, 77)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_eenyo")
+
+[node name="HealthBar" type="ColorRect" parent="HealthBarClip"]
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -421.5
+offset_top = -7.0
+offset_right = -25.5
+offset_bottom = 9.0
+grow_horizontal = 2
+pivot_offset = Vector2(0, 20)
+color = Color(0.52156866, 0.16862746, 0.17254902, 1)

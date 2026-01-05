@@ -1,0 +1,121 @@
+[gd_scene load_steps=18 format=3 uid="uid://drdy43615o5ug"]
+
+[ext_resource type="Texture2D" uid="uid://bda7lg1fc636k" path="res://assets/simon_body/simon_body_deamon_4.png" id="2_ka7uf"]
+[ext_resource type="Texture2D" uid="uid://b24nej3ymiyq8" path="res://assets/eye/center_eyes.png" id="4_8q6jq"]
+[ext_resource type="Texture2D" uid="uid://0nr3vcykyxx7" path="res://assets/eye/center_eyes._2png.png" id="5_t1cg5"]
+[ext_resource type="Texture2D" uid="uid://c67mu72pukelj" path="res://assets/eye/center_eyes._3png.png" id="6_6mro5"]
+[ext_resource type="Texture2D" uid="uid://b23slryn8jnp2" path="res://assets/eye/center_eyes._4png.png" id="7_omx0m"]
+[ext_resource type="Texture2D" uid="uid://4gw2dckf0ei6" path="res://assets/eye/center_eyes._5png.png" id="8_qk8ih"]
+[ext_resource type="Texture2D" uid="uid://caessngald3wp" path="res://assets/eye/eyes_hit_1.png" id="9_d2a0q"]
+[ext_resource type="Texture2D" uid="uid://dsuu2evpxams6" path="res://assets/eye/eyes_hit_2.png" id="10_340yy"]
+[ext_resource type="Texture2D" uid="uid://bmn48phw4ienl" path="res://assets/eye/eyes_hit_3.png" id="11_3jnd2"]
+[ext_resource type="Texture2D" uid="uid://dob4in6g30tpb" path="res://assets/eye/eyes_hit_4.png" id="12_4t4ad"]
+[ext_resource type="Texture2D" uid="uid://cpl31rueauewp" path="res://assets/eye/eyes_hit_5.png" id="13_fo2cj"]
+[ext_resource type="Texture2D" uid="uid://f10d3ehnldt1" path="res://assets/eye/eyes_hit_6.png" id="14_rist6"]
+[ext_resource type="Texture2D" uid="uid://dfu8ess7l0cwf" path="res://assets/eye/eyes_hit_7.png" id="15_3jevl"]
+[ext_resource type="Texture2D" uid="uid://daemle13q6w5j" path="res://assets/eye/eyes_hit_8.png" id="16_crkbk"]
+[ext_resource type="Texture2D" uid="uid://bjdb5d8sqp8hp" path="res://assets/eye/eyes_hit_9.png" id="17_3qa6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0jt7"]
+radius = 251.002
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akror"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8q6jq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t1cg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6mro5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_omx0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qk8ih")
+}, {
+"duration": 0.01,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_omx0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6mro5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t1cg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8q6jq")
+}],
+"loop": false,
+"name": &"close",
+"speed": 27.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_d2a0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_340yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3jnd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4t4ad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fo2cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rist6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3jevl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_crkbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3qa6d")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 38.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8q6jq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[node name="SimonBody" type="Area2D"]
+
+[node name="SimonBodySprite" type="Sprite2D" parent="."]
+position = Vector2(0, -84)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_ka7uf")
+
+[node name="SimonBodyCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_t0jt7")
+
+[node name="SimonBodySoundPLayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Eyes" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_akror")
+animation = &"hit"
+frame = 8
+frame_progress = 1.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

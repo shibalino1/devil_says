@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://be5vrah4uv7su"]
+
+[ext_resource type="Script" uid="uid://bedq152lsegw5" path="res://modifiers/modifiers.gd" id="1_u4bhr"]
+[ext_resource type="Texture2D" uid="uid://c8l3up1yje2s6" path="res://assets/background/background.png" id="2_j0gal"]
+[ext_resource type="Texture2D" uid="uid://l36b3kua7dyn" path="res://assets/cards/blind_card.png" id="2_ridb3"]
+[ext_resource type="Texture2D" uid="uid://cro88hqn6rlfp" path="res://assets/cards/curse_text.png" id="3_3osfi"]
+[ext_resource type="Texture2D" uid="uid://fvfsaj40vpsx" path="res://assets/cards/daef_card.png" id="3_j0gal"]
+[ext_resource type="Texture2D" uid="uid://buh7gpvcd7qc6" path="res://assets/cards/twist_card.png" id="4_3osfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye7cp"]
+size = Vector2(217, 326)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk3fj"]
+size = Vector2(218, 324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ridb3"]
+size = Vector2(222, 330)
+
+[node name="Modifiers" type="Node2D"]
+script = ExtResource("1_u4bhr")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(329, 424)
+scale = Vector2(1, 1.168)
+texture = ExtResource("2_j0gal")
+
+[node name="CurseText" type="Sprite2D" parent="."]
+position = Vector2(326, 194)
+texture = ExtResource("3_3osfi")
+
+[node name="ColorBlind" type="Area2D" parent="."]
+position = Vector2(536.00006, 425)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorBlind"]
+texture = ExtResource("2_ridb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorBlind"]
+visible = false
+position = Vector2(1.5, 7)
+shape = SubResource("RectangleShape2D_ye7cp")
+
+[node name="Deaf" type="Area2D" parent="."]
+position = Vector2(334, 422)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Deaf"]
+texture = ExtResource("3_j0gal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deaf"]
+visible = false
+position = Vector2(-3, 9)
+shape = SubResource("RectangleShape2D_kk3fj")
+
+[node name="Twist" type="Area2D" parent="."]
+position = Vector2(125, 423.00003)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Twist"]
+texture = ExtResource("4_3osfi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twist"]
+visible = false
+position = Vector2(-9, 8)
+shape = SubResource("RectangleShape2D_ridb3")
+
+[connection signal="input_event" from="ColorBlind" to="." method="on_color_blind"]
+[connection signal="mouse_entered" from="ColorBlind" to="." method="_on_color_blind_mouse_entered"]
+[connection signal="mouse_exited" from="ColorBlind" to="." method="_on_color_blind_mouse_exited"]
+[connection signal="input_event" from="Deaf" to="." method="on_deaf"]
+[connection signal="mouse_entered" from="Deaf" to="." method="_on_deaf_mouse_entered"]
+[connection signal="mouse_exited" from="Deaf" to="." method="_on_deaf_mouse_exited"]
+[connection signal="input_event" from="Twist" to="." method="on_twist"]
+[connection signal="mouse_entered" from="Twist" to="." method="_on_twist_mouse_entered"]
+[connection signal="mouse_exited" from="Twist" to="." method="_on_twist_mouse_exited"]

@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Devil Says"
+run/main_scene="uid://bdyc3k648jbsx"
+config/features=PackedStringArray("4.5", "Forward Plus")
+
+[autoload]
+
+BackgroundMusic="*res://ui/background_music.tscn"
+
+[display]
+
+window/size/viewport_width=650
+window/size/viewport_height=850
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://cdxo0vjsoxyo2"
+
+[dotnet]
+
+project/assembly_name="test_2d_shape"
+
+[filesystem]
+
+import/blender/enabled=false
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

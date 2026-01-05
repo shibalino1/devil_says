@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjcckd2kfsujp"]
+
+[ext_resource type="AudioStream" uid="uid://dxnt6x5136f8q" path="res://assets/sounds/annoying_music.wav" id="1_i2xn5"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_i2xn5")
+volume_db = -20.0
+autoplay = true

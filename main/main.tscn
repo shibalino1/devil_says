@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdyc3k648jbsx"]
+
+[ext_resource type="Script" uid="uid://dpb2017ypdr8m" path="res://main/main.gd" id="1_tdegw"]
+[ext_resource type="Texture2D" uid="uid://c8l3up1yje2s6" path="res://assets/background/background.png" id="2_f0rs0"]
+[ext_resource type="PackedScene" uid="uid://drdy43615o5ug" path="res://simon_body/simon_body.tscn" id="2_ptjeu"]
+[ext_resource type="Script" uid="uid://2uo2neq3pejm" path="res://simon_body/simon_body.gd" id="3_b0pen"]
+[ext_resource type="PackedScene" uid="uid://ccx0j81tnalek" path="res://ui/ui.tscn" id="3_uce0y"]
+[ext_resource type="PackedScene" uid="uid://bbn7252h82i75" path="res://pads/Pads.tscn" id="4_l2qtt"]
+[ext_resource type="AudioStream" uid="uid://b1x7elmlchdfm" path="res://assets/sounds/wrong_sound.wav" id="5_0i4oc"]
+[ext_resource type="AudioStream" uid="uid://caglx64prvwig" path="res://assets/sounds/green_sound.wav" id="7_bsumw"]
+[ext_resource type="AudioStream" uid="uid://bx11yerlv268g" path="res://assets/sounds/red_sound.wav" id="8_fwcvl"]
+[ext_resource type="AudioStream" uid="uid://br3643ddqefow" path="res://assets/sounds/yellow_sound.wav" id="9_na0o7"]
+[ext_resource type="AudioStream" uid="uid://dn24preburua" path="res://assets/sounds/blue_sound.wav" id="10_73k8k"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tdegw")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -15.0
+offset_right = 657.0
+offset_bottom = 860.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f0rs0")
+
+[node name="SimonBody" parent="." instance=ExtResource("2_ptjeu")]
+position = Vector2(326, 456)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("3_b0pen")
+wrong_sound = ExtResource("5_0i4oc")
+
+[node name="SimonBodyControl" type="Node2D" parent="SimonBody"]
+
+[node name="GreenPad" parent="SimonBody/SimonBodyControl" instance=ExtResource("4_l2qtt")]
+position = Vector2(-370, -370)
+scale = Vector2(3.3333333, 3.3333333)
+padSoundEffect = ExtResource("7_bsumw")
+
+[node name="RedPad" parent="SimonBody/SimonBodyControl" instance=ExtResource("4_l2qtt")]
+position = Vector2(370, -370)
+rotation = 1.5707964
+scale = Vector2(3.3333333, 3.3333333)
+padID = 2
+padBaseColor = "red"
+padSoundEffect = ExtResource("8_fwcvl")
+
+[node name="YellowPad" parent="SimonBody/SimonBodyControl" instance=ExtResource("4_l2qtt")]
+position = Vector2(-370, 370)
+rotation = -1.5707964
+scale = Vector2(3.3333333, 3.3333333)
+padID = 3
+padBaseColor = "yellow"
+padSoundEffect = ExtResource("9_na0o7")
+
+[node name="BluePad" parent="SimonBody/SimonBodyControl" instance=ExtResource("4_l2qtt")]
+position = Vector2(370, 370)
+rotation = -3.1415925
+scale = Vector2(3.3333333, 3.3333333)
+padID = 4
+padBaseColor = "blue"
+padSoundEffect = ExtResource("10_73k8k")
+
+[node name="UI" parent="." instance=ExtResource("3_uce0y")]
+
+[node name="ModifiersSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="start" from="SimonBody" to="." method="_on_simon_body_start"]
+[connection signal="pad_clicked" from="SimonBody/SimonBodyControl/GreenPad" to="." method="_on_pad_clicked"]
+[connection signal="pad_clicked" from="SimonBody/SimonBodyControl/RedPad" to="." method="_on_pad_clicked"]
+[connection signal="pad_clicked" from="SimonBody/SimonBodyControl/YellowPad" to="." method="_on_pad_clicked"]
+[connection signal="pad_clicked" from="SimonBody/SimonBodyControl/BluePad" to="." method="_on_pad_clicked"]

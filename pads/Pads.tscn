@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbn7252h82i75"]
+
+[ext_resource type="Script" uid="uid://si86ngvg0edc" path="res://pads/pads.gd" id="1_4ytyd"]
+[ext_resource type="Texture2D" uid="uid://c6y0pm8h1wh81" path="res://assets/pads/pad_2.png" id="3_sxvsf"]
+
+[sub_resource type="AudioStream" id="AudioStream_adsct"]
+
+[node name="Pads" type="Area2D"]
+script = ExtResource("1_4ytyd")
+padBaseColor = "green"
+metadata/_edit_group_ = true
+
+[node name="PadSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_sxvsf")
+
+[node name="PadCollisionShape" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(119, -99, 119, 15, 90, 22, 61, 37, 39, 60, 26, 84, 20, 102, 16, 118, -97, 119, -100, 114, -96, 90, -87, 55, -77, 28, -62, 0, -42, -26, -21, -46, 3, -63, 33, -78, 68, -91, 98, -97)
+
+[node name="PadSoundPLayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStream_adsct")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
